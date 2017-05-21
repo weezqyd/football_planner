@@ -72,7 +72,7 @@ class MatchesController extends Controller
     protected function generateFixture(int $t1, int $t2, int $t3, int $t4, int $fixture)
     {
         $venues = Venue::all();
-        $this->groups->all()->each(function ($group, $key) use ($venues) {
+        $this->groups->all()->each(function ($group, $key) use ($venues, $fixture) {
             $fixtures = [];
             $venue1 = $venues->random();
             $kickOff = Carbon::now()->addDays($key * $fixture + 3)->hour(12)->minute(00)->second(00);
