@@ -6,256 +6,6 @@ class FootballPlannerDatabaseSeeder extends Seeder
 {
     public function run()
     {
-        DB::table('group_teams')->insert([
-            [
-                'team_id' => '29',
-                'group_id' => '1',
-                'id' => '1',
-            ],
-
-            [
-                'team_id' => '21',
-                'group_id' => '1',
-                'id' => '2',
-            ],
-
-            [
-                'team_id' => '19',
-                'group_id' => '1',
-                'id' => '3',
-            ],
-
-            [
-                'team_id' => '16',
-                'group_id' => '1',
-                'id' => '4',
-            ],
-
-            [
-                'team_id' => '26',
-                'group_id' => '2',
-                'id' => '5',
-            ],
-
-            [
-                'team_id' => '22',
-                'group_id' => '2',
-                'id' => '6',
-            ],
-
-            [
-                'team_id' => '38',
-                'group_id' => '2',
-                'id' => '7',
-            ],
-
-            [
-                'team_id' => '25',
-                'group_id' => '2',
-                'id' => '8',
-            ],
-
-            [
-                'team_id' => '28',
-                'group_id' => '3',
-                'id' => '9',
-            ],
-
-            [
-                'team_id' => '37',
-                'group_id' => '3',
-                'id' => '10',
-            ],
-
-            [
-                'team_id' => '36',
-                'group_id' => '3',
-                'id' => '11',
-            ],
-
-            [
-                'team_id' => '27',
-                'group_id' => '3',
-                'id' => '12',
-            ],
-
-            [
-                'team_id' => '1',
-                'group_id' => '4',
-                'id' => '13',
-            ],
-
-            [
-                'team_id' => '17',
-                'group_id' => '4',
-                'id' => '14',
-            ],
-
-            [
-                'team_id' => '20',
-                'group_id' => '4',
-                'id' => '15',
-            ],
-
-            [
-                'team_id' => '35',
-                'group_id' => '4',
-                'id' => '16',
-            ],
-
-            [
-                'team_id' => '33',
-                'group_id' => '5',
-                'id' => '17',
-            ],
-
-            [
-                'team_id' => '18',
-                'group_id' => '5',
-                'id' => '18',
-            ],
-
-            [
-                'team_id' => '30',
-                'group_id' => '5',
-                'id' => '19',
-            ],
-
-            [
-                'team_id' => '39',
-                'group_id' => '5',
-                'id' => '20',
-            ],
-
-            [
-                'team_id' => '3',
-                'group_id' => '6',
-                'id' => '21',
-            ],
-
-            [
-                'team_id' => '24',
-                'group_id' => '6',
-                'id' => '22',
-            ],
-
-            [
-                'team_id' => '32',
-                'group_id' => '6',
-                'id' => '23',
-            ],
-
-            [
-                'team_id' => '5',
-                'group_id' => '6',
-                'id' => '24',
-            ],
-
-            [
-                'team_id' => '23',
-                'group_id' => '7',
-                'id' => '25',
-            ],
-
-            [
-                'team_id' => '40',
-                'group_id' => '7',
-                'id' => '26',
-            ],
-
-            [
-                'team_id' => '14',
-                'group_id' => '7',
-                'id' => '27',
-            ],
-
-            [
-                'team_id' => '15',
-                'group_id' => '7',
-                'id' => '28',
-            ],
-
-            [
-                'team_id' => '34',
-                'group_id' => '8',
-                'id' => '29',
-            ],
-
-            [
-                'team_id' => '31',
-                'group_id' => '8',
-                'id' => '30',
-            ],
-
-            [
-                'team_id' => '4',
-                'group_id' => '8',
-                'id' => '31',
-            ],
-
-            [
-                'team_id' => '41',
-                'group_id' => '8',
-                'id' => '32',
-            ],
-        ]);
-        DB::table('groups')->insert([
-            [
-                'id' => '1',
-                'title' => 'Group A',
-                'created_at' => '2017-05-21 10:21:39',
-                'updated_at' => '2017-05-21 10:21:39',
-            ],
-
-            [
-                'id' => '2',
-                'title' => 'Group B',
-                'created_at' => '2017-05-21 10:21:45',
-                'updated_at' => '2017-05-21 10:21:45',
-            ],
-
-            [
-                'id' => '3',
-                'title' => 'Group C',
-                'created_at' => '2017-05-21 10:21:50',
-                'updated_at' => '2017-05-21 10:21:50',
-            ],
-
-            [
-                'id' => '4',
-                'title' => 'Group D',
-                'created_at' => '2017-05-21 10:21:57',
-                'updated_at' => '2017-05-21 10:21:57',
-            ],
-
-            [
-                'id' => '5',
-                'title' => 'Group E',
-                'created_at' => '2017-05-21 10:22:07',
-                'updated_at' => '2017-05-21 10:22:07',
-            ],
-
-            [
-                'id' => '6',
-                'title' => 'Group F',
-                'created_at' => '2017-05-21 10:22:16',
-                'updated_at' => '2017-05-21 10:22:16',
-            ],
-
-            [
-                'id' => '7',
-                'title' => 'Group G',
-                'created_at' => '2017-05-21 10:22:23',
-                'updated_at' => '2017-05-21 10:22:23',
-            ],
-
-            [
-                'id' => '8',
-                'title' => 'Group H',
-                'created_at' => '2017-05-21 10:23:08',
-                'updated_at' => '2017-05-21 10:23:08',
-            ],
-        ]);
         DB::table('teams')->insert([
             [
                 'id' => '1',
@@ -609,6 +359,64 @@ class FootballPlannerDatabaseSeeder extends Seeder
                 'updated_at' => '2017-05-21 11:13:50',
             ],
         ]);
+        DB::table('groups')->insert([
+            [
+                'id' => '1',
+                'title' => 'Group A',
+                'created_at' => '2017-05-21 10:21:39',
+                'updated_at' => '2017-05-21 10:21:39',
+            ],
+
+            [
+                'id' => '2',
+                'title' => 'Group B',
+                'created_at' => '2017-05-21 10:21:45',
+                'updated_at' => '2017-05-21 10:21:45',
+            ],
+
+            [
+                'id' => '3',
+                'title' => 'Group C',
+                'created_at' => '2017-05-21 10:21:50',
+                'updated_at' => '2017-05-21 10:21:50',
+            ],
+
+            [
+                'id' => '4',
+                'title' => 'Group D',
+                'created_at' => '2017-05-21 10:21:57',
+                'updated_at' => '2017-05-21 10:21:57',
+            ],
+
+            [
+                'id' => '5',
+                'title' => 'Group E',
+                'created_at' => '2017-05-21 10:22:07',
+                'updated_at' => '2017-05-21 10:22:07',
+            ],
+
+            [
+                'id' => '6',
+                'title' => 'Group F',
+                'created_at' => '2017-05-21 10:22:16',
+                'updated_at' => '2017-05-21 10:22:16',
+            ],
+
+            [
+                'id' => '7',
+                'title' => 'Group G',
+                'created_at' => '2017-05-21 10:22:23',
+                'updated_at' => '2017-05-21 10:22:23',
+            ],
+
+            [
+                'id' => '8',
+                'title' => 'Group H',
+                'created_at' => '2017-05-21 10:23:08',
+                'updated_at' => '2017-05-21 10:23:08',
+            ],
+        ]);
+
         DB::table('users')->insert([
             [
                 'id' => '1',
@@ -620,6 +428,200 @@ class FootballPlannerDatabaseSeeder extends Seeder
                 'updated_at' => '2017-05-19 11:24:57',
             ],
         ]);
+        DB::table('group_teams')->insert([
+            [
+                'team_id' => '29',
+                'group_id' => '1',
+                'id' => '1',
+            ],
+
+            [
+                'team_id' => '21',
+                'group_id' => '1',
+                'id' => '2',
+            ],
+
+            [
+                'team_id' => '19',
+                'group_id' => '1',
+                'id' => '3',
+            ],
+
+            [
+                'team_id' => '16',
+                'group_id' => '1',
+                'id' => '4',
+            ],
+
+            [
+                'team_id' => '26',
+                'group_id' => '2',
+                'id' => '5',
+            ],
+
+            [
+                'team_id' => '22',
+                'group_id' => '2',
+                'id' => '6',
+            ],
+
+            [
+                'team_id' => '38',
+                'group_id' => '2',
+                'id' => '7',
+            ],
+
+            [
+                'team_id' => '25',
+                'group_id' => '2',
+                'id' => '8',
+            ],
+
+            [
+                'team_id' => '28',
+                'group_id' => '3',
+                'id' => '9',
+            ],
+
+            [
+                'team_id' => '37',
+                'group_id' => '3',
+                'id' => '10',
+            ],
+
+            [
+                'team_id' => '36',
+                'group_id' => '3',
+                'id' => '11',
+            ],
+
+            [
+                'team_id' => '27',
+                'group_id' => '3',
+                'id' => '12',
+            ],
+
+            [
+                'team_id' => '1',
+                'group_id' => '4',
+                'id' => '13',
+            ],
+
+            [
+                'team_id' => '17',
+                'group_id' => '4',
+                'id' => '14',
+            ],
+
+            [
+                'team_id' => '20',
+                'group_id' => '4',
+                'id' => '15',
+            ],
+
+            [
+                'team_id' => '35',
+                'group_id' => '4',
+                'id' => '16',
+            ],
+
+            [
+                'team_id' => '33',
+                'group_id' => '5',
+                'id' => '17',
+            ],
+
+            [
+                'team_id' => '18',
+                'group_id' => '5',
+                'id' => '18',
+            ],
+
+            [
+                'team_id' => '30',
+                'group_id' => '5',
+                'id' => '19',
+            ],
+
+            [
+                'team_id' => '39',
+                'group_id' => '5',
+                'id' => '20',
+            ],
+
+            [
+                'team_id' => '3',
+                'group_id' => '6',
+                'id' => '21',
+            ],
+
+            [
+                'team_id' => '24',
+                'group_id' => '6',
+                'id' => '22',
+            ],
+
+            [
+                'team_id' => '32',
+                'group_id' => '6',
+                'id' => '23',
+            ],
+
+            [
+                'team_id' => '5',
+                'group_id' => '6',
+                'id' => '24',
+            ],
+
+            [
+                'team_id' => '23',
+                'group_id' => '7',
+                'id' => '25',
+            ],
+
+            [
+                'team_id' => '40',
+                'group_id' => '7',
+                'id' => '26',
+            ],
+
+            [
+                'team_id' => '14',
+                'group_id' => '7',
+                'id' => '27',
+            ],
+
+            [
+                'team_id' => '15',
+                'group_id' => '7',
+                'id' => '28',
+            ],
+
+            [
+                'team_id' => '34',
+                'group_id' => '8',
+                'id' => '29',
+            ],
+
+            [
+                'team_id' => '31',
+                'group_id' => '8',
+                'id' => '30',
+            ],
+
+            [
+                'team_id' => '4',
+                'group_id' => '8',
+                'id' => '31',
+            ],
+
+            [
+                'team_id' => '41',
+                'group_id' => '8',
+                'id' => '32',
+            ],
+        ]);
+
         DB::table('venues')->insert([
             [
                 'id' => '1',
