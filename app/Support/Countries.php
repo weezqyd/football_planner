@@ -2,6 +2,8 @@
 
 namespace App\Support;
 
+use Illuminate\Support\Collection;
+
 class Countries
 {
     /**
@@ -9,14 +11,29 @@ class Countries
      *
      * @var Illuminate\Support\Collection
      **/
-    protected $countries;
+    protected $countries = [];
 
     /**
      * Create a new instance of Countries Class.
      */
     public function __construct()
     {
-        $this->countries = collect(json_decode(file_get_contents(base_path('countries1.json'))))->sort();
+        $this->countries = Collection::make(json_decode(file_get_contents(base_path('countries1.json')), false));
+    }
+
+    /**
+     * Cast the country collection to object collection.
+     *
+     * @param Illuminate\Support\Collection $countries
+     **/
+    protected function cast(Collection $countries)
+    {
+        $tmp = [];
+        foreach ($countries->all() as $country) {
+            $tmp[] = new Country($country);
+        }
+
+        return Collection::make($tmp);
     }
 
     /**
@@ -24,9 +41,9 @@ class Countries
      *
      * @return array $countries
      **/
-    public function getCountries()
+    public function all()
     {
-        return $this->countries->all();
+        return $this->cast($this->countries)->all();
     }
 
     /**
@@ -38,9 +55,9 @@ class Countries
      **/
     public function find(string $cca2)
     {
-        $country = $this->countries->where('cca2', $cca2)->first();
+        $country = $this->countries->where('cca2', strtoupper($cca2))->first();
         if (null !== $country) {
-            new Country($country);
+            return new Country($country);
         }
         throw new CountryNotFoundException("Country $cca2 was not found");
     }
@@ -54,5 +71,13 @@ class Countries
     public function where($key, $value)
     {
         return $this->countries->where($key, $value);
+    }
+
+    /**
+     * Get the countries collection object.
+     **/
+    public function prototype()
+    {
+        return $this->countries;
     }
 }

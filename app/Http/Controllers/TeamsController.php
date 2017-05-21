@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Entities\Team;
+use App\Support\Countries;
 use Illuminate\Http\Request;
 
 class TeamsController extends Controller
@@ -10,10 +11,11 @@ class TeamsController extends Controller
     /**
      * Create a new controller instance.
      **/
-    public function __construct(Team $teams)
+    public function __construct(Team $teams, Countries $countries)
     {
         $this->teams = $teams;
-        $this->middleware('auth');
+        $this->countries = $countries;
+        $this->middleware('auth')->only(['create', 'store']);
     }
 
     /**
@@ -23,7 +25,9 @@ class TeamsController extends Controller
      */
     public function index()
     {
-        return view('teams.index');
+        $teams = $this->teams->orderBy('country', 'ASC')->get();
+
+        return view('teams.index', compact('teams'));
     }
 
     /**
@@ -33,7 +37,7 @@ class TeamsController extends Controller
      */
     public function create()
     {
-        $countries = collect(json_decode(file_get_contents(base_path('countries1.json'))))->sort()->all();
+        $countries = $this->countries->all();
 
         return view('teams.create', compact('countries'));
     }
@@ -47,10 +51,25 @@ class TeamsController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, ['country' => 'required', 'country_code' => 'required']);
-        $this->teams->create($request->input());
+        $messages = ['country.unique' => 'The team already exists in the tounament'];
+        $this->validate($request, ['country' => 'required|unique:teams,country_code'], $messages);
+        $country = $this->countries->find($request->get('country'));
+        $data = [
+            'country' => $country->name,
+            'region' => $country->region,
+            'country_code' => $country->cca2,
+            //we will leave this for now as ti is of no much importance
+            'rank' => 0,
+            'qualify_position' => 1,
+        ];
+        if ($this->teams->count() >= 32) {
+            session(['error' => 'The maximum number of teams for this tournament has been reached']);
 
-        return back();
+            return redirect()->route('teams.index');
+        }
+        $this->teams->create($data);
+
+        return redirect()->route('teams.index');
     }
 
     /**
@@ -61,40 +80,6 @@ class TeamsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param int $id
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @param int                      $id
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param int $id
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
     {
     }
 }

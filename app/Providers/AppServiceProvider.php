@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Support\Countries;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -19,5 +20,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        $this->app->singleton(Countries::class, function () {
+            return new Countries();
+        });
     }
 }

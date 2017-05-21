@@ -19,4 +19,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 
-Route::resource('teams', 'TeamsController');
+Route::resource('teams', 'TeamsController', ['only' => ['index', 'create', 'store', 'show']]);
+Route::resource('venues', 'VenuesController', ['only' => ['index', 'create', 'store']]);
+Route::resource('fixtures', 'MatchesController', ['only' => ['index', 'create']]);
+Route::resource('groups', 'GroupsController', ['only' => ['index', 'create']]);

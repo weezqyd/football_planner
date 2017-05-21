@@ -5,27 +5,6 @@ namespace App\Support;
 class Country
 {
     /**
-     * Region for a country.
-     *
-     * @var string
-     **/
-    public $region;
-
-    /**
-     * Common name for the country.
-     *
-     * @var string
-     **/
-    public $name;
-
-    /**
-     * Sub-Region.for a country.
-     *
-     * @var string
-     **/
-    public $subRegion;
-
-    /**
      * General information for a Country.
      *
      * @var object
@@ -39,7 +18,7 @@ class Country
      */
     public function __construct($country)
     {
-        $this->cointry = $country;
+        $this->country = (object) $country;
     }
 
     /**
@@ -57,12 +36,14 @@ class Country
      *
      * @param string $value Attribute for a country
      **/
-    protected function getAttiute($value)
+    protected function getAttribute($value)
     {
-        $method = 'get'.ucfirst(camel_case($value)).'Attribute';
+        $method = camel_case('get_'.$value.'_attribute');
         if (method_exists($this, $method)) {
-            return $this->{$method};
+            return $this->{$method}();
         }
+
+        return $method;
     }
 
     /**
@@ -87,5 +68,13 @@ class Country
     protected function getSubRegionAttribute()
     {
         return $this->country->subregion;
+    }
+
+    /**
+     * Get ISO 3166-1 alpha-2 of the country.
+     **/
+    protected function getCca2Attribute()
+    {
+        return $this->country->cca2;
     }
 }
