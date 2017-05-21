@@ -101,6 +101,7 @@ class MatchesController extends Controller
                 Match::create($fixture);
             }
         });
+        // return redirect()->route('fixtures.index')
     }
 
     /**
