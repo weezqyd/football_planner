@@ -44,6 +44,11 @@ class MatchesController extends Controller
         }
         resolve('db')->table('mathes')->truncate();
         // First Fixture
+        $this->generateFixture(0, 1, 2, 3, 1);
+         // Second Fixture
+        $this->generateFixture(0, 2, 1, 3, 2);
+         // Third Fixture
+        $this->generateFixture(3, 0, 2, 1, 3);
     }
 
     /**
