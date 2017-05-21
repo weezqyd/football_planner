@@ -2,14 +2,11 @@
 
 use Illuminate\Database\Seeder;
 
-class FootballPlannerDatabaseSeeder extends Seeder {
+class FootballPlannerDatabaseSeeder extends Seeder
+{
     public function run()
     {
-    	 DB::statement('SET FOREIGN_KEY_CHECKS=0');
-
-         
         DB::table('group_teams')->insert([
-            
             [
                 'team_id' => '29',
                 'group_id' => '1',
@@ -201,10 +198,8 @@ class FootballPlannerDatabaseSeeder extends Seeder {
                 'group_id' => '8',
                 'id' => '32',
             ],
-
         ]);
         DB::table('groups')->insert([
-            
             [
                 'id' => '1',
                 'title' => 'Group A',
@@ -260,10 +255,8 @@ class FootballPlannerDatabaseSeeder extends Seeder {
                 'created_at' => '2017-05-21 10:23:08',
                 'updated_at' => '2017-05-21 10:23:08',
             ],
-
         ]);
         DB::table('teams')->insert([
-            
             [
                 'id' => '1',
                 'country' => 'Argentina',
@@ -615,10 +608,8 @@ class FootballPlannerDatabaseSeeder extends Seeder {
                 'created_at' => '2017-05-21 11:13:50',
                 'updated_at' => '2017-05-21 11:13:50',
             ],
-
         ]);
         DB::table('users')->insert([
-            
             [
                 'id' => '1',
                 'name' => 'The Administrator',
@@ -627,11 +618,9 @@ class FootballPlannerDatabaseSeeder extends Seeder {
                 'remember_token' => 'd4hwrmpOM8J8g0CJZLCucmCl2f188LkiyuDPd2AQkic9WKFZV99UZZMva7lk',
                 'created_at' => '2017-05-19 11:24:57',
                 'updated_at' => '2017-05-19 11:24:57',
-            ]
-
+            ],
         ]);
         DB::table('venues')->insert([
-            
             [
                 'id' => '1',
                 'stadium' => 'Luzhniki',
@@ -715,7 +704,6 @@ class FootballPlannerDatabaseSeeder extends Seeder {
                 'city' => 'Kaliningrad',
                 'capacity' => '35212',
             ],
-
         ]);
     }
 }
