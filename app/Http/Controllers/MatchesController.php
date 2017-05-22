@@ -6,7 +6,6 @@ use Carbon\Carbon;
 use App\Entities\Group;
 use App\Entities\Match;
 use App\Entities\Venue;
-use Illuminate\Http\Request;
 
 class MatchesController extends Controller
 {
@@ -27,6 +26,7 @@ class MatchesController extends Controller
      */
     public function index()
     {
+        return view('teams.fixtures');
     }
 
     /**
@@ -49,30 +49,25 @@ class MatchesController extends Controller
         $this->generateFixture(0, 2, 1, 3, 2);
          // Third Fixture
         $this->generateFixture(3, 0, 2, 1, 3);
+
+        return redirect()->route('fixtures.index');
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Generate match match fixtures for the teams in all groups.
      *
-     * @param \Illuminate\Http\Request $request
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param int $id
+     * @param int $t1      Home team for the first fixture
+     * @param int $t2      Away team for the first fixture
+     * @param int $t3      Home team for the second fixture
+     * @param int $t4      Away team for the second fixture
+     * @param int $fixture Round of matches played
      *
      * @return \Illuminate\Http\Response
      */
     protected function generateFixture(int $t1, int $t2, int $t3, int $t4, int $fixture)
     {
         $venues = Venue::all();
-        $this->groups->all()->each(function ($group, $key) use ($venues, $fixture) {
+        $this->groups->all()->each(function ($group, $key) use ($venues, $fixture, $t1, $t2, $t3, $t4) {
             $fixtures = [];
             $venue1 = $venues->random();
             $kickOff = Carbon::now()->addDays($key * $fixture + 3)->hour(12)->minute(00)->second(00);
@@ -81,8 +76,11 @@ class MatchesController extends Controller
             $fixtures[] = [
                 'home_team' => $homeTeam->id,
                 'away_team' => $awayTeam->id,
-                'kick_off' => $kickOff,
+                'kick_off' => $kickOff->format('Y-m-d H:i:s'),
                 'venue_id' => $venue1->id,
+                'result' => '',
+                'outcome' => '',
+                'status' => '',
             ];
             $venue2 = $venues->random();
             // Make sure that the fist venue is not the same as the second
@@ -94,47 +92,16 @@ class MatchesController extends Controller
             $fixtures[] = [
                 'home_team' => $homeTeam1->id,
                 'away_team' => $awayTeam1->id,
-                'kick_off' => $kickOff->hour(14),
+                'kick_off' => $kickOff->hour(14)->format('Y-m-d H:i:s'),
                 'venue_id' => $venue2->id,
+                'result' => '',
+                'outcome' => '',
+                'status' => '',
             ];
+          //  dd($fixtures);
             foreach ($fixtures as $key => $fixture) {
                 Match::create($fixture);
             }
         });
-        // return redirect()->route('fixtures.index')
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param int $id
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @param int                      $id
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param int $id
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
     }
 }

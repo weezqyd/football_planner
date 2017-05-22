@@ -15,6 +15,6 @@ class Team extends Model
      **/
     public function group()
     {
-        return $this->belongsToMany('App\Entities\Group')->using('App\Entities\GroupTeam');
+        return $this->belongsToMany('App\Entities\Group', 'group_teams');
     }
 }

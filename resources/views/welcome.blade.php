@@ -3,12 +3,9 @@
         	<div class="banner"> 
 	    <div class="banner-text">
 	    	<div class="container">
-				<h1>SEARCHING ABOUT SOCCER..??</h1>
-				<p>HERE WE GOT SAME NEWS HERE</p>
-				<div class="search">
-					<input type="text" value="Search here..." onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search here...';}">
-					<input type="submit" value="Find">
-			 	</div>
+				<h1>WORLD CUP 2018 RUSSIA</h1>
+				<p>THE FIFA WORLD CUP LIVE NEWSFEED</p>
+				
 			 </div>
 		</div>
 	</div>
@@ -19,6 +16,20 @@
 		<div class="container">
 			<div class="website-top">
 				<h3>Upcoming Fixtures</h3>
+			</div>
+			<div class="row">
+			<table class="table">
+				<tbody>
+					@foreach(App\Entities\Match::where('kick_off', '>=', Carbon\Carbon::now())->take(6)->get() as $match)
+					<tr>
+						<td>{{$match->kick_off->format('l d F Y H:i')}}</td>
+						<td scope="row">{{$match->hometeam->country.' VS '.$match->awayteam->country}}</td>
+						<td>{{$match->venue->stadium.', '.$match->venue->city}}</td>
+						<td>{{$match->hometeam->group->first()->title}}</td>
+					</tr>
+					@endforeach
+				</tbody>
+			</table>
 			</div>
 		</div>
 	</div> 
