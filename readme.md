@@ -11,6 +11,11 @@ git clone https://github.com/weezqyd/football_planner
 cd football_planner
 
 composer install
+```
+
+Now rename the `.env.example` file to `.env` open it and edit the databse section adding your database connection details, after this run the following commands to set up application. 
+
+```
 
 php artisan migrate --seed
 
